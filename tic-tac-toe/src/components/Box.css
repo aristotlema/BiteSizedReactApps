@@ -1,0 +1,19 @@
+.box{
+    background-color: rgb(156, 147, 147);
+    width: 30%; 
+    height: 30%;
+    transition-duration: .25s;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box:hover{
+    transform: scale(1.05);
+    border: 2px solid rgb(219, 219, 11);
+    box-shadow: -10px -10px rgba(43, 40, 40, .8), 10px 10px rgba(156, 147, 147, 0.1);
+}
+

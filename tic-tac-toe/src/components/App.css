@@ -1,0 +1,9 @@
+.app{
+    background-color: rgb(70, 70, 70);
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
