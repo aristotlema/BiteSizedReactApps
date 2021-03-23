@@ -1,0 +1,36 @@
+.title {
+    flex: 1;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.listItems {
+    flex: 2;
+    font-size: .75rem;
+}
+
+.listItem {
+    padding: 15px;
+    margin: 15px;
+    font-weight: 600;
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+
+.listItem:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.itemContent {
+    overflow: hidden;
+    font-weight: 400;
+    transition: max-height 0.25s ease;    
+}
+
+.itemText {
+    font-weight: 400;
+    height: auto;
+    padding-top: 10px;
+}

@@ -1,12 +1,11 @@
 import React from 'react';
+import AccordionItem from './AccordionItem';
 import './Accordion.css';
 
 const Accordion = ({ listItems }) => {
-    const renderedList = listItems.map(({title, body}) => {
+    const renderedList = listItems.map((item, index) => {
         return(
-            <div className="listItem">
-                {title}
-            </div>
+            <AccordionItem title={item.title} body={item.body} key={index}/>
         );
     });
     return(
