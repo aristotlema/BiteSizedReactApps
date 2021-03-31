@@ -1,0 +1,69 @@
+.grocery-bud{
+    background-color: #ffffff;
+    width: 560px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.grocery-bud-title {
+    font-weight: 600;
+    font-size: 2rem;
+}
+.grocery-bud-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    padding: 30px 0;
+}
+
+.grocery-bud-input input{
+    background-color: #f1f5f8;
+    width: 100%;
+    border: none;
+    height: 2rem;
+    border-radius: 5px 0 0 5px;
+}
+
+.grocery-bud-input button {
+    background-color: #a5d5f8;
+    border: none;
+    width: 5rem;
+    border-radius: 0 5px 5px 0;
+}
+
+.grocery-list{
+    width: 100%;
+}
+.grocery-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: 400;
+    letter-spacing: .3rem;
+    margin-top: 10px;
+}
+.grocery-item .icons {
+    cursor: pointer;
+}
+.grocery-item .icons .edit{
+    margin-right: 5px;
+    color: rgb(21, 128, 0);
+}
+.grocery-item .icons .trash{
+    margin-left: 5px;
+    color: rgb(250, 64, 31);
+}
+
+.clear-items-button button {
+    font-size: 100%;
+    background-color: #ffffff;
+    border: none;
+    margin-top: 30px;
+    font-weight: 400;
+    color: rgb(250, 64, 31);
+    cursor: pointer;
+}

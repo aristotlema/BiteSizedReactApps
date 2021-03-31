@@ -1,7 +1,14 @@
 import React from 'react';
+import './reset.css';
+import './App.css';
+import GroceryBud from './GroceryBud';
 
 const App = () => {
-    return <div>I am de app</div>;
+    return (
+        <div className="app">
+            <GroceryBud />
+        </div>
+    );
 };
 
 export default App;
