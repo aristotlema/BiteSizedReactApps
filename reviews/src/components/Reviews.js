@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
+import './Reviews.css'
 
 const Reviews = ({ reviews }) => {
     const [selectedReview, setSelectedReview] = useState(0);
-    // const reviewList = reviews.map(({reviwerName, jobTitle, picture, reviewText}) => {
-    //     return(
-    //         <div>
-    //             {reviwerName} - {jobTitle} - {picture} {reviewText}
-    //         </div>
-    //     );
-    // });
     
     const previousReview = () => {
         if(selectedReview <= 0) {
@@ -18,8 +12,6 @@ const Reviews = ({ reviews }) => {
         }
     };
     const nextReview = () => {
-        console.log(reviews.length);
-        
         if(selectedReview  >= reviews.length - 1) {
             setSelectedReview(0);
         } else if (selectedReview < reviews.length) { 
@@ -27,17 +19,29 @@ const Reviews = ({ reviews }) => {
         } else {
             console.log("something went wrong somewhere");
         }
-        console.log(selectedReview);
     };
 
     return(
         <>
-            <h1>Our Reviews</h1>
+            <h1 className="reviews-title">Our Reviews</h1>
             <div className="review-card">
-                {reviews[selectedReview].reviewerName}
+                <div className="review-card-picture">
+                    <img src={reviews[selectedReview].picture} alt="reviewer" />
+                </div>
                 <div>
-                    <button onClick={() => previousReview()}>Back</button>
-                    <button onClick={() => nextReview()}>Next</button>
+                    <h4 className="review-card-reviewer-name">
+                        {reviews[selectedReview].reviewerName}
+                    </h4>
+                    <p className="review-card-job-title">
+                        {reviews[selectedReview].jobTitle}
+                    </p>
+                </div>
+                <div className="review-card-review-text">
+                    {reviews[selectedReview].reviewText}
+                </div>
+                <div className="review-card-buttons">
+                    <div className="arrow left" onClick={() => previousReview()}></div>
+                    <div className="arrow right" onClick={() => nextReview()}></div>
                 </div>
             </div>
         </>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Reviews from './Reviews';
 import './reset.css';
+import './App.css';
 
 const reviews = [
     {
@@ -31,7 +32,7 @@ const reviews = [
 
 const App = () => {
     return (
-        <div>
+        <div className="app">
             <Reviews reviews={reviews}/>
         </div>
     );
