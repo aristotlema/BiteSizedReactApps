@@ -3,3 +3,9 @@
 body {
     background-color: var(--color-background-gray);
 }
+
+.main-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
