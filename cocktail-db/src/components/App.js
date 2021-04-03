@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './reset.css';
 import './App.scss';
+import cocktailDB from '../api/cocktailDB';
 import NavBar from './NavBar';
 import SearchBar from './SearchBar';
-import SeachBar from './SearchBar';
-import axios from 'axios';
-import cocktailDB from '../api/cocktailDB';
+import DrinkList from './DrinkList';
+
 
 const App = () => {
+    const [cocktailResults, setCocktailResults] = useState([]);
 
     useEffect(() => {
         const search = async () => {
@@ -16,7 +17,8 @@ const App = () => {
                     s: 'mar'
                 }
             });
-            console.log(data);
+            console.log(data.drinks);
+            setCocktailResults(data.drinks);
         };
 
         search();
@@ -29,9 +31,9 @@ const App = () => {
         <div>
             <NavBar />
             <main className="main-content">
-                <SeachBar />
+                <SearchBar />
+                <DrinkList cocktailResults={cocktailResults} />
             </main>
-            
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchBar.scss';
 
-const SeachBar = () => {
+const SearchBar = () => {
     return (
         <div className="search-bar">
             <form>
@@ -12,4 +12,4 @@ const SeachBar = () => {
 
 };
 
-export default SeachBar;
+export default SearchBar;
