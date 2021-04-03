@@ -11,27 +11,23 @@ const App = () => {
     const [cocktailResults, setCocktailResults] = useState([]);
 
     useEffect(() => {
-        const search = async () => {
-            const { data } = await cocktailDB.get('/search.php', {
-                params: {
-                    s: 'mar'
-                }
-            });
-            console.log(data.drinks);
-            setCocktailResults(data.drinks);
-        };
-
-        search();
+        search('c');
     }, []);
-    
 
-    
+    const search = async (term) => {
+        const { data } = await cocktailDB.get('/search.php', {
+            params: {
+                s: term
+            }
+        });
+        setCocktailResults(data.drinks);
+    };
 
     return (
         <div>
             <NavBar />
             <main className="main-content">
-                <SearchBar />
+                <SearchBar onFormSubmit={search}/>
                 <DrinkList cocktailResults={cocktailResults} />
             </main>
         </div>

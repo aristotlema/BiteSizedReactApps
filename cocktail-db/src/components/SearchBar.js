@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SearchBar.scss';
 
-const SearchBar = () => {
+const SearchBar = ({ onFormSubmit }) => {
+    const [term, setTerm] = useState('');
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        onFormSubmit(term);
+    }
+
     return (
         <div className="search-bar">
-            <form>
-                <input className="search-bar-input" type="text" />
+            <form onSubmit={onSubmit}>
+                <input 
+                    className="search-bar-input" 
+                    type="text" 
+                    value={term}
+                    onChange={(e) => setTerm(e.target.value)}
+                />
             </form>
         </div>
     );
