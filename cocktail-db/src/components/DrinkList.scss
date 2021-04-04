@@ -1,7 +1,7 @@
 // TODO - This is a temp fix, based on docs, should not matter that this isn't imported into App.scss 
 // If classes are not extended they will not be written into CSS
 @import '../styles/_scss-variables.scss';
-
+ 
 section.drink-list{
     color: #fff;
     display: flex;
@@ -40,7 +40,7 @@ section.drink-list{
                 background-color: var(--color-light-gray-2);
                 color: var(--color-bright-purple);
                 border: 2px solid var(--color-bright-purple);
-                border-radius: 10px;
+                border-radius: 15px;
                 font-size: 1.1rem;
                 padding: 4px 1.2rem 4px 1.2rem;
                 cursor: pointer;
