@@ -5,6 +5,11 @@ body {
     background-color: var(--color-background-gray);
 }
 
+.link-component {
+    text-decoration: none;
+    color: inherit;
+}
+
 .main-content{
     display: flex;
     flex-direction: column;
