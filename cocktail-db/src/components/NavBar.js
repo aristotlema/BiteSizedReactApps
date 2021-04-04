@@ -17,8 +17,6 @@ const NavBar = () => {
                 <Link href="/about">
                     About
                 </Link>
-                {/* <a onClick={(event) => handleClick(event)} href="/">Home</a>
-                <a onClick={(event) => handleClick(event)} href="/about">About</a> */}
             </div>
         </nav>
     );

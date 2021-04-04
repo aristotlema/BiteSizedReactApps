@@ -2,7 +2,12 @@ import React from 'react';
 import './DrinkList.scss';
 import Link from './Link';
 
-const DrinkList = ({ cocktailResults }) => {
+const DrinkList = ({ cocktailResults, details }) => {
+
+    const loadDetails = (event, idDrink) => {
+        event.preventDefault();
+        details(idDrink);
+    };
     // Keep in one function for readability 
     const isCocktailResults = () => {
         if(!cocktailResults) {
@@ -10,8 +15,8 @@ const DrinkList = ({ cocktailResults }) => {
         } else if (cocktailResults.length > 0) {
             return cocktailResults.map(({ idDrink, strDrinkThumb, strDrink, strGlass }) => {
                 return (
-                    <div key={idDrink} className="drink-list-card">
-                        <Link href="/details">
+                    <div onClick={(e) => loadDetails(e, idDrink)} key={idDrink} className="drink-list-card">
+                        <Link href={`/details/${idDrink}`}>
                             <img src={strDrinkThumb} alt={strDrink} className="drink-list-card-image"/>
                             <div className="drink-list-card-body">
                                 <div className="card-title">{strGlass}</div>

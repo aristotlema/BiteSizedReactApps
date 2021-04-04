@@ -6,11 +6,12 @@ import cocktailDB from '../api/cocktailDB';
 import NavBar from './NavBar';
 import SearchBar from './SearchBar';
 import DrinkList from './DrinkList';
+import DrinkDetails from './DrinkDetails';
 
 
 const App = () => {
     const [cocktailResults, setCocktailResults] = useState([]);
-    const [selectedCocktail, setSelectedCocktail] = useState([]);
+    const [selectedCocktail, setSelectedCocktail] = useState({});
 
     useEffect(() => {
         search('c');
@@ -24,6 +25,14 @@ const App = () => {
         });
         setCocktailResults(data.drinks);
     };
+    const details = async (id) => {
+        const { data } = await cocktailDB.get('/lookup.php', {
+            params: {
+                i: id
+            }
+        });
+        setSelectedCocktail(data.drinks[0]);
+    };
 
     return (
         <div>
@@ -31,13 +40,13 @@ const App = () => {
             <main className="main-content">
                 <Route path="/">
                     <SearchBar onFormSubmit={search}/>
-                    <DrinkList cocktailResults={cocktailResults} />
+                    <DrinkList details={details} cocktailResults={cocktailResults} />
                 </Route>
                 <Route path="/about">
                     <h1>About page</h1>
                 </Route>
-                <Route path="/details">
-                    <h1>Drink details</h1>
+                <Route path={`/details/${selectedCocktail.idDrink}`}>
+                    <DrinkDetails selectedCocktail={selectedCocktail} />
                 </Route>
             </main>    
         </div>
