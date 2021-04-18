@@ -1,0 +1,11 @@
+nav.nav-bar{
+    background-color: var(--main-blue);
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.5rem;
+    h2 {
+        font-weight: 600;
+    }
+}
