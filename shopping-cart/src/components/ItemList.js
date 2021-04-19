@@ -1,19 +1,22 @@
 import React from 'react';
 import './ItemList.scss';
 import { connect } from 'react-redux';
+import { addToCartAction } from '../actions';
 
 const ItemList = (props) => {
-    console.log(props);
-    
     const renderItems = props.items.map(item => {
         return (
-            <div className="item-card">
-                <img src={item.image} />
+            <div key={item.model} className="item-card">
+                <img src={item.image} alt={item.model} />
                 <div className="item-card-details">
                     <h4>{item.model}</h4>
                     <div>${item.price}</div>
                 </div>
-                <button>Add To Cart</button>
+                <button
+                    onClick={() => props.addToCartAction(item)}
+                >
+                    Add To Cart
+                </button>
             </div>
         );
     });
@@ -34,5 +37,5 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, {
-
+    addToCartAction
 })(ItemList);
