@@ -13,7 +13,7 @@ const ItemList = (props) => {
                     <div>${item.price}</div>
                 </div>
                 <button
-                    onClick={() => props.addToCartAction(item)}
+                    onClick={() => props.addToCart(item.id)}
                 >
                     Add To Cart
                 </button>
@@ -32,10 +32,10 @@ const ItemList = (props) => {
 };
 
 const mapStateToProps = (state) => {
-    return { items: state.items };
+    return { items: state.shop.items };
 };
 
 
 export default connect(mapStateToProps, {
-    addToCartAction
+    addToCart: addToCartAction
 })(ItemList);

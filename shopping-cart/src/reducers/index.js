@@ -27,39 +27,42 @@ const initialState = {
             image: 'https://i.pcmag.com/imagery/reviews/04R1s9xuQfmVH4MHFeuaghc-18..1570065414.jpg'
         }
     ],
-    addedIds: [],
-    quantityById: {}
-}
+    cart: [],
+    total: 0
+};
 
-const itemsReducer = (state = initialState.items) => {
-    return state;
-}
+// const itemsReducer = (state = initialState.items) => {
+//     return state;
+// };
 
 
-const addedIds = (state = initialState.addedIds, action) => {
+const shopReducer = (state = initialState, action) => {
+    
+    
+    // console.log(item);
+    // const item = state.
+    // let addedItem = state.items.find(item => item.id === action.id);
+    // const existsInCart = state.cart.find(item => item.id === action.payload.id);
     switch(action.type) {
         case 'ADD_TO_CART':
-            if(state.includes(action.payload.id)) {
-                console.log('Already Exists');
-                return state;
-            } else {
-                return [...state, action.payload.id];
-            }
+            const item = state.items.find((item) => item.id === action.payload.id);
+            // const inCart = state.cart.map(prod => )
+            console.log(item);
+            return {
+                ...state,
+                cart: [...state.cart, {...item, qty: 1}]
+            };
         default:
             return state;
     }
-}
-
-const addToCartReducer = (cart = [], action) => {
-    if(action.type === 'ADD_TO_CART') {
-        console.log(cart);
-        return [...cart, action.payload];
-    }
-    return cart;
+    // if(action.type === 'ADD_TO_CART') {
+    //     // if(existsInCart) {
+    //     //     console.log('item is in cart');
+    //     // } 
+    //     return [...state.cart, action.payload];
+    // }
 };
 
 export default combineReducers({
-    items: itemsReducer,
-    cart: addToCartReducer,
-    addedIds
+    shop: shopReducer
 });

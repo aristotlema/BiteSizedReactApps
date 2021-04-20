@@ -1,17 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Cart = ({ cart, addedIds }) => {
-    const renderCart = addedIds.map(item => {
-        return <div>{item}</div>
-    });
-    return <div>{renderCart}</div>;
+const Cart = ({ cart }) => {
+    const renderCart = () => {
+        if(cart.length <= 0){
+            return <div>No Items in cart</div>; 
+        }
+        else if(cart.length > 0) {
+            return cart.map(item => {
+                return <div>{item.id}</div>
+            });
+        } 
+        else {
+            return <div>Error</div>;
+        }
+    } 
+
+    return <div>{renderCart()}</div>;
 };
 
 const mapStateToProps = state => {
     return { 
-        cart: state.cart, 
-        addedIds: state.addedIds
+        cart: state.shop.cart
     };
 };
 
