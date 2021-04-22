@@ -31,36 +31,34 @@ const initialState = {
     total: 0
 };
 
-// const itemsReducer = (state = initialState.items) => {
-//     return state;
-// };
-
 
 const shopReducer = (state = initialState, action) => {
-    
-    
-    // console.log(item);
-    // const item = state.
-    // let addedItem = state.items.find(item => item.id === action.id);
-    // const existsInCart = state.cart.find(item => item.id === action.payload.id);
     switch(action.type) {
         case 'ADD_TO_CART':
-            const item = state.items.find((item) => item.id === action.payload.id);
-            // const inCart = state.cart.map(prod => )
-            console.log(item);
-            return {
-                ...state,
-                cart: [...state.cart, {...item, qty: 1}]
-            };
+            const item = state.items.find(prod => prod.id === action.payload.id);
+            const inCart = state.cart.find(item => item.id === action.payload.id);
+            console.log(inCart);
+
+            if(inCart) {
+                // item.qty + 1;
+                return {
+                    ...state,
+                    cart: state.cart.map(item => item.id === action.payload.id 
+                        ? {...item, qty: item.qty + 1} 
+                        : item),
+                    // cart: {...item, qty: newQty},
+                    total: state.total + item.price
+                };
+            } else {
+                return{
+                    ...state,
+                    cart: [...state.cart, {...item, qty: 1}],
+                    total: state.total += item.price
+                }
+            }
         default:
             return state;
     }
-    // if(action.type === 'ADD_TO_CART') {
-    //     // if(existsInCart) {
-    //     //     console.log('item is in cart');
-    //     // } 
-    //     return [...state.cart, action.payload];
-    // }
 };
 
 export default combineReducers({
