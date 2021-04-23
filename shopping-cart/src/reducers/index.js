@@ -41,7 +41,6 @@ const shopReducer = (state = initialState, action) => {
         case 'ADD_TO_CART':
             const item = state.items.find(prod => prod.id === action.payload.id);
             const inCart = state.cart.find(item => item.id === action.payload.id);
-            console.log(inCart);
 
             if(inCart) {
                 return {
@@ -57,6 +56,14 @@ const shopReducer = (state = initialState, action) => {
                     cart: [...state.cart, {...item, qty: 1}],
                     total: state.total += item.price
                 }
+            }
+        case 'REMOVE_FROM_CART':
+            const removeItem = state.cart.find(prod => prod.id === action.payload.id);
+            const removedItemTotal = removeItem.price * removeItem.qty;
+            return{
+                ...state,
+                cart: state.cart.filter(item => item.id !== removeItem.id),
+                total: state.total - removedItemTotal
             }
         default:
             return state;

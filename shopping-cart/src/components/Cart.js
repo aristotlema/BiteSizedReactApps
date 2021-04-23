@@ -1,8 +1,9 @@
 import React from 'react';
 import './Cart.scss';
 import { connect } from 'react-redux';
+import { removeFromCartAction } from '../actions';
 
-const Cart = ({ cart }) => {
+const Cart = ({cart, removeFromCart, total}) => {
     const renderCart = () => {
         if(cart.length <= 0){
             return <div>No Items in cart</div>; 
@@ -22,7 +23,11 @@ const Cart = ({ cart }) => {
                     </div>
                     <div className="card-controls">
                         <input value={item.qty} />
-                        <button>Delete</button>
+                        <button 
+                            onClick={() => removeFromCart(item.id)}
+                        >
+                            Delete
+                        </button>
                     </div>
                 </div>
                 );
@@ -38,6 +43,9 @@ const Cart = ({ cart }) => {
             
             <div className="cart">
                 <h1>Cart</h1>
+                <div>
+                    {total}
+                </div>
                 {renderCart()}
             </div>
         </div>
@@ -46,9 +54,11 @@ const Cart = ({ cart }) => {
 
 const mapStateToProps = state => {
     return { 
-        cart: state.shop.cart
+        cart: state.shop.cart,
+        total: state.shop.total
     };
 };
 
 export default connect(mapStateToProps, {
+    removeFromCart: removeFromCartAction
 })(Cart);
