@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import './Cart.scss';
 import { connect } from 'react-redux';
-import { removeFromCartAction } from '../actions';
+import { removeFromCartAction, updateQuantityAction } from '../actions';
 
-const Cart = ({cart, removeFromCart, total}) => {
+const Cart = ({cart, removeFromCart, total, updateQuantity}) => {
+    const [qty, setQty] = useState(null);
+
+
+
     const renderCart = () => {
         if(cart.length <= 0){
             return <div>No Items in cart</div>; 
@@ -22,7 +26,11 @@ const Cart = ({cart, removeFromCart, total}) => {
                         <p>{item.description}</p>
                     </div>
                     <div className="card-controls">
-                        <input value={item.qty} />
+                        <input 
+                            type="number" 
+                            value={item.qty}
+                            onChange={(e) => updateQuantity(item.id, e.target.value)}
+                        />
                         <button 
                             onClick={() => removeFromCart(item.id)}
                         >
@@ -60,5 +68,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-    removeFromCart: removeFromCartAction
+    removeFromCart: removeFromCartAction,
+    updateQuantity: updateQuantityAction
 })(Cart);

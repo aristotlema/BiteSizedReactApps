@@ -65,6 +65,14 @@ const shopReducer = (state = initialState, action) => {
                 cart: state.cart.filter(item => item.id !== removeItem.id),
                 total: state.total - removedItemTotal
             }
+        case 'UPDATE_QTY':
+            const updateItemQty = state.cart.find(item => item.id === action.payload.id);
+            return {
+                ...state,
+                cart: state.cart.map(item => item.id === action.payload.id
+                ? {...item, qty: action.payload.value}
+                : item)
+            }
         default:
             return state;
     }

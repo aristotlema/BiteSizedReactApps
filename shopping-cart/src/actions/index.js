@@ -15,3 +15,13 @@ export const removeFromCartAction = itemId => {
         }
     }
 }
+
+export const updateQuantityAction = (itemId, value) => {
+    return {
+        type: 'UPDATE_QTY',
+        payload: {
+            id: itemId,
+            value
+        }
+    } 
+}
